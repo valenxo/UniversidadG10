@@ -1,26 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package universidadgrupo10;
 
-import java.sql.Connection;
-import universidadgrupo10.accesoADatos.Conexion;
+import universidadgrupo10.accesoADatos.alumnoData;
+import universidadgrupo10.entidades.Alumno;
 
-/**
- *
- * @author Mesa de Entrada
- */
+
 public class Universidadgrupo10 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
         
-      Connection con =  Conexion.getConexion();
+        /*Alumno juan=new Alumno (38438411,"Marrero","Juan Manuel",LocalDate.of(1994, 9, 16),true);
+        alumnoData alm=new alumnoData();
+        //alm.guardarAlumno(juan);
+        //alm.modificarAlumno(juan);
+        //alm.borrarAlumno(1);
+       Alumno aluEncontrado=alm.buscarAlumnoPorDni(38438411);
+       
+       if (aluEncontrado != null){
+           System.out.println(aluEncontrado.toString());
+       }*/
+        
+        
+        alumnoData alm=new alumnoData();
+        
+        for(Alumno alumno:alm.listarAlumnos()){
+            System.out.println(alumno.toString());
+        }
     }
     
 }
