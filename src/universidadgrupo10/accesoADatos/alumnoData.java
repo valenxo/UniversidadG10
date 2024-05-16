@@ -3,8 +3,6 @@ package universidadgrupo10.accesoADatos;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadgrupo10.entidades.Alumno;
 
@@ -36,6 +34,7 @@ public class alumnoData {
                if(rs.next()){
                    alumno.setIdAlumno(rs.getInt(1));    //recorremos con if porque solo es 1 alumno
                    JOptionPane.showMessageDialog(null, "Alumno cargado correctamente");
+                   ps.close();
                }
            }
         } catch (SQLException ex) {
@@ -64,6 +63,7 @@ public class alumnoData {
             
             if(gl==1){
                 JOptionPane.showMessageDialog(null, "Alumno modificado correctamente");
+                ps.close();
             }
             
         } catch (SQLException ex) {
@@ -85,6 +85,7 @@ public class alumnoData {
             if(gl==1){
                 
                 JOptionPane.showMessageDialog(null, "Alumno dado de baja exitosamente");
+                ps.close();
             }
             
         } catch (SQLException ex) {
@@ -97,7 +98,9 @@ public class alumnoData {
     public Alumno buscarAlumno(int id){
         
         String sql="SELECT dni, apellido, nombre, fechanac FROM alumno WHERE idalumno = ? AND estado = 1";
+        
         Alumno alumno=null; //iniciamos un alumno vacio
+        
         try {
              PreparedStatement ps = con.prepareStatement(sql) ;
                 ps.setInt(1, id);
@@ -123,7 +126,6 @@ public class alumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
         return alumno;
- 
     
     }
      public Alumno buscarAlumnoPorDni(int dni){
