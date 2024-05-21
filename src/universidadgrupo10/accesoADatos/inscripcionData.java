@@ -98,9 +98,10 @@ public class inscripcionData {
                insc.setAlumno(alu);
                insc.setMateria(mat);
                insc.setNota(rs.getInt("nota"));
+               cursadas.add(insc);
                
             }
-            
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla inscripcion");
         }
@@ -129,9 +130,9 @@ return cursadas;
                insc.setAlumno(alu);
                insc.setMateria(mat);
                insc.setNota(rs.getInt("nota"));
-               
+               cursadas.add(insc);
             }
-            
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla inscripcion");
         }
@@ -143,8 +144,9 @@ return cursadas;
         
         ArrayList<Materia> materias=new ArrayList<>();
         
-        String sql="SELECT i.idmateria, nombre, año FROM inscripcion i, materia m"
-                + "WHERE i.idmateria = m.idmateria AND i.idalumno = ?";
+        String sql = "SELECT i.idmateria, m.nombre, m.año " +
+                     "FROM inscripcion i, materia m " +
+                     "WHERE i.idmateria = m.idmateria AND i.idalumno = ?";
         
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -160,7 +162,7 @@ return cursadas;
                 
                 materias.add(materia);
             }
-            
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla inscripcion");
         }
