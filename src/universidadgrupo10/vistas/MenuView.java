@@ -18,7 +18,8 @@ public class MenuView extends javax.swing.JFrame {
      */
     public MenuView() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
+        this.setSize(560, 320);
     }
 
     /**
@@ -65,7 +66,7 @@ public class MenuView extends javax.swing.JFrame {
         jMenuBar1.setBackground(new java.awt.Color(102, 102, 255));
 
         jMenu1.setBackground(new java.awt.Color(102, 102, 255));
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo10/recursos/alumno icon.png"))); // NOI18N
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo10/recursos/alumno icon .png"))); // NOI18N
         jMenu1.setText("Alumno");
 
         jMenuItem1.setText("Formulario De Alumno");
@@ -73,7 +74,7 @@ public class MenuView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo10/recursos/materia icon.png"))); // NOI18N
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo10/recursos/materia icon .png"))); // NOI18N
         jMenu2.setText("Materia");
 
         jMenuItem2.setText("Formulario De Materia");
@@ -92,7 +93,7 @@ public class MenuView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo10/recursos/consulta icon.png"))); // NOI18N
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo10/recursos/consulta icon .png"))); // NOI18N
         jMenu4.setText("Consultas");
 
         jMenuItem5.setText("Buscar Alumnos Por Materia");
