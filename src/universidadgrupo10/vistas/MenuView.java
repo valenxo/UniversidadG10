@@ -76,6 +76,11 @@ public class MenuView extends javax.swing.JFrame {
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo10/recursos/materia icon .png"))); // NOI18N
         jMenu2.setText("Materia");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
 
         jMenuItem2.setText("Formulario De Materia");
         jMenu2.add(jMenuItem2);
@@ -120,6 +125,14 @@ public class MenuView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        
+        FormularioMateria formMateria=new FormularioMateria();
+        formMateria.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     /**
      * @param args the command line arguments
