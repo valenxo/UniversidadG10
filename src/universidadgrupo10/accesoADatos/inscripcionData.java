@@ -40,6 +40,7 @@ public class inscripcionData {
     public void actualizarNota(int idAlumno, int idMateria, double nota){
     
         String sql="UPDATE inscripcion SET Nota =? WHERE idAlumno =? AND idMateria =?";
+        System.out.println("Consulta SQL: " + sql);
          try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setDouble(1, nota);
@@ -49,10 +50,13 @@ public class inscripcionData {
             int filas= ps.executeUpdate();
             if (filas>0){
                 JOptionPane.showMessageDialog(null, "Notas Actualizadas");
+            }else {
+            JOptionPane.showMessageDialog(null, "No se encontraron registros para actualizar");
             }
              ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla inscripcion");
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla inscripcion" +ex.getMessage());
+            ex.printStackTrace();
         }
     }
     
@@ -208,4 +212,5 @@ public class inscripcionData {
         
         return alumnosMateria;
     }
+
 }

@@ -56,9 +56,9 @@ public class Universidadgrupo10 {
 
     //PRUEBAS INSCRIPCION
     
-    alumnoData ad=new alumnoData();
-    materiaData md=new materiaData();
-    inscripcionData idt=new inscripcionData();
+//    alumnoData ad=new alumnoData();
+//    materiaData md=new materiaData();
+//    inscripcionData idt=new inscripcionData();
 
 //   Alumno juan=ad.buscarAlumno(1);
 //   Materia materia=md.buscarMateria(2);
@@ -67,7 +67,7 @@ public class Universidadgrupo10 {
    
 
   //idt.guardarInscripcion(insc);
-   //idt.actualizarNota(2, 2, 9);
+//   idt.actualizarNota(2, 4, 9);
   // idt.borrarInscripcionMateriaAlumno(2, 2);
     
 //  for(Inscripcion inscrp:idt.obtenerInscripciones() ){

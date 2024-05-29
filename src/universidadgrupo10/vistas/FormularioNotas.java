@@ -3,8 +3,6 @@ import universidadgrupo10.accesoADatos.*;
 import universidadgrupo10.entidades.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class FormularioNotas extends javax.swing.JFrame {
@@ -143,7 +141,22 @@ public class FormularioNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_cbAlumnosActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-    
+        
+        Alumno alumnoSeleccionado = (Alumno) cbAlumnos.getSelectedItem();
+        int idAlumno = alumnoSeleccionado.getIdAlumno();
+        
+        //recorrer la tabla
+        
+        for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+            
+        // Obtenemos los valores de cada fila
+        
+        int idMateria = (int) modeloTabla.getValueAt(i, 0);
+        String nombreMateria = (String) modeloTabla.getValueAt(i, 1);
+        double nota = (double) modeloTabla.getValueAt(i, 2);
+
+        inscData.actualizarNota(idAlumno, idMateria, nota);
+        }
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
