@@ -57,9 +57,9 @@ public class Universidadgrupo10 {
 
     //PRUEBAS INSCRIPCION
     
-//    alumnoData ad=new alumnoData();
-//    materiaData md=new materiaData();
-//    inscripcionData idt=new inscripcionData();
+    alumnoData ad=new alumnoData();
+    materiaData md=new materiaData();
+    inscripcionData idt=new inscripcionData();
 
 //   Alumno juan=ad.buscarAlumno(1);
 //   Materia materia=md.buscarMateria(2);
@@ -89,15 +89,15 @@ public class Universidadgrupo10 {
 //        System.out.println(ins.toString());
 //         }
 
-//    List<Alumno> alumnos = idt.obtenerAlumnosPorMateria(1);
-//    if (alumnos.isEmpty()) {
-//        System.out.println("No se encontraron alumnos inscritos en la materia.");
-//    } else {
-//        System.out.println("Alumnos inscritos en la materia:");
-//        for (Alumno alumno : alumnos) {
-//            System.out.println(alumno.toString());
-//        }
-//    }
+    List<Alumno> alumnos = idt.obtenerAlumnosPorMateria(1);
+    if (alumnos.isEmpty()) {
+        System.out.println("No se encontraron alumnos inscritos en la materia.");
+    } else {
+        System.out.println("Alumnos inscriptos en la materia:");
+        for (Alumno alumno : alumnos) {
+            System.out.println(alumno.toString());
+        }
+    }
  }
 
    

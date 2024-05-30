@@ -66,6 +66,11 @@ public class AlumnosPorMateria extends javax.swing.JFrame {
                 cbMateriasActionPerformed(evt);
             }
         });
+        cbMaterias.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cbMateriasPropertyChange(evt);
+            }
+        });
 
         tablaAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,7 +123,7 @@ public class AlumnosPorMateria extends javax.swing.JFrame {
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(botonSalir)
@@ -133,7 +138,7 @@ public class AlumnosPorMateria extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1)
+            .addComponent(jInternalFrame1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -150,6 +155,10 @@ public class AlumnosPorMateria extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void cbMateriasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbMateriasPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbMateriasPropertyChange
 
     /**
      * @param args the command line arguments
@@ -218,22 +227,27 @@ public class AlumnosPorMateria extends javax.swing.JFrame {
 
     
     private void cargarAlumnos(){
-        Materia materiaSeleccionada = (Materia) cbMaterias.getSelectedItem();
+      
+        
+        Materia materiaSeleccionada =  (Materia) cbMaterias.getSelectedItem();
+        
         int idMateria = materiaSeleccionada.getIdMateria();
         
-        listaI = inscData.obtenerInscripcionesPorAlumno(idMateria);
+        System.out.println(idMateria);
         
-        for (Inscripcion in: listaI){
-            Alumno a = in.getAlumno();
-
+        listaA  = inscData.obtenerAlumnosPorMateria(idMateria);
+        if (listaA.isEmpty()) {
             
-            tablaModelo.addRow(new Object[]{a.getIdAlumno(),a.getDni(),a.getApellido(),a.getNombre()});
-            
-        tablaAlumnos.revalidate();
-        tablaAlumnos.repaint();
-        }
-        
+        System.out.println("No se encontraron alumnos inscriptos en la materia.");        
     }
+        for (Alumno a: listaA){
+         
+           tablaModelo.addRow(new Object[]{a.getIdAlumno(),a.getDni(),a.getApellido(),a.getNombre()});
+            
+
+            }
+        }
+    
    
     
     private void borrarFilaTabla(){

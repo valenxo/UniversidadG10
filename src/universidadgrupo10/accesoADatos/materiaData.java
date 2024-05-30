@@ -131,7 +131,7 @@ public class materiaData {
         
        ArrayList<Materia> lista=new ArrayList<>();
        
-       String sql="SELECT nombre, año FROM materia WHERE estado = 1";
+       String sql="SELECT idMateria,nombre, año FROM materia WHERE estado = 1";
        
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -145,7 +145,7 @@ public class materiaData {
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAño(rs.getInt("año"));
                 materia.setEstado(true);
-                
+                materia.setIdMateria(rs.getInt("idMateria"));
                 lista.add(materia);
                 
             }
