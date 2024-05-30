@@ -3,8 +3,6 @@ import universidadgrupo10.accesoADatos.*;
 import universidadgrupo10.entidades.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class FormularioNotas extends javax.swing.JFrame {
@@ -143,6 +141,7 @@ public class FormularioNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_cbAlumnosActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+
 
     }//GEN-LAST:event_botonGuardarActionPerformed
 
