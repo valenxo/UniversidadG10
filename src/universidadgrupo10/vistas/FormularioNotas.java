@@ -143,7 +143,7 @@ public class FormularioNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_cbAlumnosActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-    
+
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
