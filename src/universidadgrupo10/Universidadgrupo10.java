@@ -1,6 +1,7 @@
 package universidadgrupo10;
 
 import java.time.LocalDate;
+import java.util.List;
 import universidadgrupo10.accesoADatos.alumnoData;
 import universidadgrupo10.accesoADatos.inscripcionData;
 import universidadgrupo10.accesoADatos.materiaData;
@@ -67,7 +68,7 @@ public class Universidadgrupo10 {
    
 
   //idt.guardarInscripcion(insc);
-//   idt.actualizarNota(2, 4, 9);
+  // idt.actualizarNota(2, 2, 9);
   // idt.borrarInscripcionMateriaAlumno(2, 2);
     
 //  for(Inscripcion inscrp:idt.obtenerInscripciones() ){
@@ -88,10 +89,16 @@ public class Universidadgrupo10 {
 //        System.out.println(ins.toString());
 //         }
 
-//    for (Alumno alm:idt.obtenerAlumnoPorMateria(2)){
-//        System.out.println(alm.toString());
+//    List<Alumno> alumnos = idt.obtenerAlumnosPorMateria(1);
+//    if (alumnos.isEmpty()) {
+//        System.out.println("No se encontraron alumnos inscritos en la materia.");
+//    } else {
+//        System.out.println("Alumnos inscritos en la materia:");
+//        for (Alumno alumno : alumnos) {
+//            System.out.println(alumno.toString());
+//        }
 //    }
-      
-    }
+ }
+
    
 }

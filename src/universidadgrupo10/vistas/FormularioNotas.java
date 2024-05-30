@@ -6,13 +6,12 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class FormularioNotas extends javax.swing.JFrame {
-    private List<Materia> listaM;
     private List<Alumno> listaA;
     private List<Inscripcion> listaI;
     
     private inscripcionData inscData=new inscripcionData();
     private alumnoData aluData=new alumnoData();
-    private materiaData matData=new materiaData();
+
     
     private DefaultTableModel modeloTabla;
     
@@ -25,7 +24,7 @@ public class FormularioNotas extends javax.swing.JFrame {
         listaA = aluData.listarAlumnos();        
         modeloTabla = new DefaultTableModel();
         inscData = new inscripcionData();
-        matData = new materiaData();
+
         
         cargarAlumnos();
         armarCabeceraTabla();
@@ -141,8 +140,26 @@ public class FormularioNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_cbAlumnosActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        Alumno alumnoSeleccionado=(Alumno) cbAlumnos.getSelectedItem();
+        int idAlumno = alumnoSeleccionado.getIdAlumno();
+        
+            //recorremos tabla
+            
+            for (int i = 0 ; i < modeloTabla.getRowCount();i++){
+            
+             //obtener datos de las filas
+             
+             int idMateria = (int) modeloTabla.getValueAt(i, 0);
+             String nombreMateria = (String) modeloTabla.getValueAt(i, 1);
+             double nota = Double.parseDouble(modeloTabla.getValueAt(i, 2).toString());
+             
+             inscData.actualizarNota(idAlumno, idMateria, nota);
 
+            }
 
+         borrarFilaTabla();
+         cargarMaterias();
+            
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
