@@ -70,6 +70,11 @@ public class MenuView extends javax.swing.JFrame {
         jMenu1.setText("Alumno");
 
         jMenuItem1.setText("Formulario De Alumno");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -195,6 +200,12 @@ public class MenuView extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(WIDTH);
     }//GEN-LAST:event_jMenu5MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        FormularioAlumno formAlumno=new FormularioAlumno();
+        formAlumno.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
 
     /**
