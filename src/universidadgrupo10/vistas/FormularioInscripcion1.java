@@ -1,39 +1,39 @@
 package universidadgrupo10.vistas;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo10.entidades.*;
 import universidadgrupo10.accesoADatos.*;
-public class FormularioInscripcion extends javax.swing.JFrame {
+
+public class FormularioInscripcion1 extends javax.swing.JFrame {
     
-    ArrayList<Materia> listaMat;
-    ArrayList<Alumno> listaAlu;
+    List<Materia> listaM;
+    List<Alumno> listaA;
     
     private inscripcionData inscData; //objeto para crear inscripcion o guardar o anular
-    private materiaData matData;
-    private alumnoData aluData;
+    private materiaData mData;
+    private alumnoData aData;
     
     
     private DefaultTableModel modelo;
     
-    public FormularioInscripcion() {
+    public FormularioInscripcion1() {
         initComponents();
         
-        aluData=new alumnoData();
-        listaAlu = (ArrayList <Alumno>)aluData.listarAlumnos();
+        aData=new alumnoData();
+        listaA = aData.listarAlumnos();
         modelo = new DefaultTableModel();
+        inscData = new inscripcionData();
+        mData = new materiaData();
         cargaAlumnos();
         armarCabeceraTabla();
-        inscData = new inscripcionData();
-        matData = new materiaData();
-        
+
     }
 
     private void cargaAlumnos(){    //carga los alumnos al combobox
-        for (Alumno alu : listaAlu) {
-            boxalu.addItem(alu.getNombre());
+        for (Alumno item : listaA) {
+            boxalu.addItem(item);
         }
     }    
 
@@ -43,15 +43,15 @@ public class FormularioInscripcion extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        boxalu = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         rbMateria = new javax.swing.JRadioButton();
         rbMateriaNo = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        jtMaterias = new javax.swing.JTable();
         botonInscribir = new javax.swing.JButton();
         botonAnular = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
+        boxalu = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,8 +59,6 @@ public class FormularioInscripcion extends javax.swing.JFrame {
         jLabel1.setText("Formulario de Inscripcion");
 
         jLabel2.setText("Seleccione un alumno:");
-
-        boxalu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("Listado de Materias");
@@ -73,8 +71,13 @@ public class FormularioInscripcion extends javax.swing.JFrame {
         });
 
         rbMateriaNo.setText("Materias No inscriptas");
+        rbMateriaNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbMateriaNoActionPerformed(evt);
+            }
+        });
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        jtMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -85,15 +88,30 @@ public class FormularioInscripcion extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(table);
+        jScrollPane1.setViewportView(jtMaterias);
 
         botonInscribir.setText("Inscribir");
         botonInscribir.setEnabled(false);
+        botonInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonInscribirActionPerformed(evt);
+            }
+        });
 
         botonAnular.setText("Anular Inscripcion");
         botonAnular.setEnabled(false);
+        botonAnular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAnularActionPerformed(evt);
+            }
+        });
 
         botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,7 +128,7 @@ public class FormularioInscripcion extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rbMateria)
                                 .addGap(46, 46, 46)
@@ -118,8 +136,8 @@ public class FormularioInscripcion extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(27, 27, 27)
-                                .addComponent(boxalu, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(boxalu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(102, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(botonInscribir)
@@ -168,6 +186,49 @@ public class FormularioInscripcion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_rbMateriaActionPerformed
 
+    private void rbMateriaNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMateriaNoActionPerformed
+        borrarFilasTabla();
+        rbMateria.setSelected(false);
+        
+        noInscriptas();
+         botonAnular.setEnabled(false);
+        botonInscribir.setEnabled(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbMateriaNoActionPerformed
+
+    private void botonInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInscribirActionPerformed
+     
+        int filaseleccionada= jtMaterias.getSelectedRow();
+        if(filaseleccionada!=1){
+            Alumno a=(Alumno)boxalu.getSelectedItem();
+            int idMateria=(Integer)modelo.getValueAt(filaseleccionada, 0);
+            String Nombre=(String)modelo.getValueAt(filaseleccionada, 1);
+            int Año=(Integer)modelo.getValueAt(filaseleccionada, 2);
+            Materia m= new Materia(idMateria,Nombre,Año,true);
+            
+            Inscripcion i= new Inscripcion(a,m,0);
+            inscData.guardarInscripcion(i);
+            borrarFilasTabla();
+        }
+    }//GEN-LAST:event_botonInscribirActionPerformed
+
+    private void botonAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnularActionPerformed
+        
+        int filaseleccionada= jtMaterias.getSelectedRow();
+        if(filaseleccionada!=1){
+            Alumno a=(Alumno)boxalu.getSelectedItem();
+            int idMateria=(Integer)modelo.getValueAt(filaseleccionada, 0);
+            
+            inscData.borrarInscripcionMateriaAlumno(a.getIdAlumno(), idMateria);
+            borrarFilasTabla();
+        }
+        
+    }//GEN-LAST:event_botonAnularActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        System.exit(WIDTH);
+    }//GEN-LAST:event_botonSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,20 +246,27 @@ public class FormularioInscripcion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormularioInscripcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormularioInscripcion1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormularioInscripcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormularioInscripcion1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormularioInscripcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormularioInscripcion1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormularioInscripcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormularioInscripcion1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormularioInscripcion().setVisible(true);
+                new FormularioInscripcion1().setVisible(true);
             }
         });
     }
@@ -208,14 +276,14 @@ public class FormularioInscripcion extends javax.swing.JFrame {
     private javax.swing.JButton botonAnular;
     private javax.swing.JButton botonInscribir;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JComboBox<String> boxalu;
+    private javax.swing.JComboBox<Alumno> boxalu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jtMaterias;
     private javax.swing.JRadioButton rbMateria;
     private javax.swing.JRadioButton rbMateriaNo;
-    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 
 private void armarCabeceraTabla(){
@@ -227,7 +295,7 @@ private void armarCabeceraTabla(){
     for(Object it: filaCabecera){
         modelo.addColumn(it);
     }
-    table.setModel(modelo);
+    jtMaterias.setModel(modelo);
 }
 
 private void borrarFilasTabla(){
@@ -242,21 +310,21 @@ private void noInscriptas(){
     
     //borrar filas de tabla
     
-    Alumno al = (Alumno)boxalu.getSelectedItem();
-    listaMat = (ArrayList) inscData.obtenerMateriasNoCursadas(al.getIdAlumno());
-    for (Materia m: listaMat){
+    Alumno alSelec = (Alumno)boxalu.getSelectedItem();
+    listaM = inscData.obtenerMateriasNoCursadas(alSelec.getIdAlumno());
+    for (Materia m: listaM){
         modelo.addRow(new Object[] {m.getIdMateria(), m.getNombre(), m.getAño()});
     }
 }
 
-private void cargarInscriptas(){
-    
-        Alumno al = (Alumno)boxalu.getSelectedItem();
-        List <Materia> lista = inscData.obtenerMateriasCursadas(al.getIdAlumno());
-        for (Materia m: listaMat){
-        modelo.addRow(new Object[] {m.getIdMateria(), m.getNombre(), m.getAño()});
-        }
+private void cargarInscriptas() {
+    Alumno al = (Alumno) boxalu.getSelectedItem();
+    List<Materia> lista = inscData.obtenerMateriasCursadas(al.getIdAlumno());
+    for (Materia m : lista) {
+        modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAño()});
     }
+}
+
 
 }
 

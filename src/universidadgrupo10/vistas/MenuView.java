@@ -33,7 +33,7 @@ public class MenuView extends javax.swing.JFrame {
 
         ImageIcon icono = new ImageIcon(getClass().getResource("/universidadgrupo10/recursos/fondo.jpg"));
         Image miImagen= icono.getImage();
-        jDesktopPane1 = new javax.swing.JDesktopPane(){
+        escritorio = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
                 g.drawImage(miImagen,0,0,getWidth(),getHeight(),this);
             }
@@ -52,14 +52,14 @@ public class MenuView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 527, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 261, Short.MAX_VALUE)
         );
 
@@ -96,6 +96,11 @@ public class MenuView extends javax.swing.JFrame {
         jMenu3.setText("Administración");
 
         jMenuItem3.setText("Manejo De Inscripciones");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuItem4.setText("Manipulacion De Notas");
@@ -123,6 +128,16 @@ public class MenuView extends javax.swing.JFrame {
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo10/recursos/salir icon.png"))); // NOI18N
         jMenu5.setText("Salir");
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -131,11 +146,11 @@ public class MenuView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -163,6 +178,24 @@ public class MenuView extends javax.swing.JFrame {
         AlumnosPorMateria alXMateria = new AlumnosPorMateria();
         alXMateria.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+
+        FormularioInscripcion1 formInsc= new FormularioInscripcion1 ();
+        formInsc.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu5ActionPerformed
+
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+        // TODO add your handling code here:
+        System.exit(WIDTH);
+    }//GEN-LAST:event_jMenu5MouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -200,7 +233,7 @@ public class MenuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
