@@ -58,11 +58,13 @@ public class FormularioInscripcion1 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Formulario de Inscripcion");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Seleccione un alumno:");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("Listado de Materias");
 
+        rbMateria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rbMateria.setText("Materias Inscriptas");
         rbMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +72,7 @@ public class FormularioInscripcion1 extends javax.swing.JFrame {
             }
         });
 
+        rbMateriaNo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rbMateriaNo.setText("Materias No inscriptas");
         rbMateriaNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +140,7 @@ public class FormularioInscripcion1 extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGap(27, 27, 27)
                                 .addComponent(boxalu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(botonInscribir)

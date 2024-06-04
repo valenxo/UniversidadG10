@@ -12,16 +12,14 @@ import universidadgrupo10.entidades.*;
 
 /**
  *
- * @author Usuario
+ * @author avoch
  */
 public class FormularioAlumno extends javax.swing.JInternalFrame {
     alumnoData AlumnoData;
-    /**
-     * Creates new form Alumnos
-     */
+   
     public FormularioAlumno() {
         initComponents();
-         this.AlumnoData = AlumnoData;
+        
          
     }
 
@@ -122,7 +120,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Ebrima", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setText("Alumno");
 
         jBuscar.setText("Buscar");
@@ -336,11 +334,9 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         Alumno alu = AlumnoData.buscarAlumnoPorDni(dni);
         if(alu==null){
             JOptionPane.showMessageDialog(null, "No se encontro el alumno vinculado al DNI");
-            return;
         }else{
             if(alu.isEstado()==false){
                 JOptionPane.showMessageDialog(null, "El alumno esta dado de baja");
-                return;
             }
         }
         //eliminar alumno y limpiar los campos 
